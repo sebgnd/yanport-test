@@ -1,0 +1,64 @@
+<div class="info-selection-container">
+    <div>
+        <h2>Grid</h2>
+        <div class="info-selection">
+            <div class="info grid">
+                <mat-form-field appearance="fill">
+                    <mat-label>Width</mat-label>
+                    <input
+                        matInput
+                        color="white"
+                        type="number"
+                        name="width" 
+                        [value]="grid.width" 
+                        (change)="onGridSizeChange($event)" 
+                    />
+                </mat-form-field>
+            </div>
+            <div class="info grid">
+                <mat-form-field appearance="fill">
+                    <mat-label>Height</mat-label>
+                    <input 
+                        matInput
+                        type="number"
+                        name="height" 
+                        [value]="grid.height" 
+                        (change)="onGridSizeChange($event)" 
+                    />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>Vacum</h2>
+        <div class="info-selection">
+            <div class="info vacum">
+                <mat-form-field appearance="fill">
+                    <mat-label>x</mat-label>
+                    <input 
+                        matInput
+                        type="number" 
+                        name="x" 
+                        [value]="vacum.x" 
+                        (change)="onVacumInfoChange($event)" 
+                    />
+                </mat-form-field>
+            </div>
+            <div class="info vacum">
+                <mat-form-field appearance="fill">
+                    <mat-label>y</mat-label>
+                    <input 
+                        matInput
+                        type="number" 
+                        name="y" 
+                        [value]="vacum.y" 
+                        (change)="onVacumInfoChange($event)" 
+                    />
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="compute-button">
+        <button (click)="onGoClick()" color="primary" mat-raised-button>Go</button>
+    </div>
+</div>
