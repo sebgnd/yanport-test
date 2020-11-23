@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Grid, Instruction, Vacum } from '../types/types';
-import { VacumService } from '../services/vacum.service';
+import { Grid, Instruction, Vacum } from '../../types/types';
+import { VacumService } from '../../services/vacum.service';
 
 @Component({
   selector: 'app-vacum-position-calculator',

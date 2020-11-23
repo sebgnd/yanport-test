@@ -6,10 +6,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
-import { VacumPositionCalculatorComponent } from './vacum-position-calculator/vacum-position-calculator.component';
-import { MainWindowComponent } from './main-window/main-window.component';
-import { NewVacumPositionComponent } from './new-vacum-position/new-vacum-position.component';
-import { VacumPositionItemComponent } from './new-vacum-position/vacum-position-item/vacum-position-item.component';
+import { VacumPositionCalculatorComponent } from './components/vacum-position-calculator/vacum-position-calculator.component';
+import { MainWindowComponent } from './components/main-window/main-window.component';
+import { NewVacumPositionComponent } from './components/new-vacum-position/new-vacum-position.component';
+import { VacumPositionItemComponent } from './components/new-vacum-position/vacum-position-item/vacum-position-item.component';
 
 @NgModule({
   declarations: [
