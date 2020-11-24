@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-vacum-position-item',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vacum-position-item.component.scss']
 })
 export class VacumPositionItemComponent implements OnInit {
+  @Input() label: string;
+  @Input() value: string;
 
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

@@ -1,4 +1,5 @@
-<app-vacum-position-calculator
+<div class="content">
+    <app-vacum-position-calculator
     [grid]="grid"
     [vacum]="vacum"
     [instructions]="instructions"
@@ -7,4 +8,8 @@
     (onVacumChange)="handleVacumChange($event)"
     (onNewVacumComputed)="handleNewVacumComputed($event)"
 
-></app-vacum-position-calculator>
+    ></app-vacum-position-calculator>
+    <app-new-vacum-position
+        [newVacum]="newVacum"
+    ></app-new-vacum-position>
+</div>

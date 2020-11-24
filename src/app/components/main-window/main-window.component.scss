@@ -1,7 +1,19 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 app-vacum-position-calculator {
     display: block;
     width: 50%;
     height: 100vh;
     padding: 3em;
     box-sizing: border-box;
+}
+
+app-new-vacum-position {
+    display: block;
+    width: 50%;
 }

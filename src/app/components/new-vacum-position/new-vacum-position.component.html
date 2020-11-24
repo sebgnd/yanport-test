@@ -1,1 +1,21 @@
-<p>new-vacum-position works!</p>
+<div class="new-vacum-position">
+    <div class="position-items" *ngIf="newVacum; else none">
+        <app-vacum-position-item
+            [label]="xLabel"
+            [value]="newVacum.x"
+        ></app-vacum-position-item>
+        <app-vacum-position-item
+            [label]="yLabel"
+            [value]="newVacum.y"
+        ></app-vacum-position-item>
+        <app-vacum-position-item
+            [label]="orientationLabel"
+            [value]="newVacum.orientation"
+        ></app-vacum-position-item>
+    </div>
+    <ng-template #none>
+        <div class="instruction">
+            <p>Clickez sur Go pour calculer la position du robot.</p>
+        </div>
+    </ng-template>
+</div>
