@@ -1,8 +1,8 @@
-export type Orientation = 'N' | 'E' | 'S' | 'W';
+export type Direction = 'N' | 'E' | 'S' | 'W';
 export type Instruction = 'G' | 'D' | 'A';
 export type Status = 'start' | 'end' | 'path' | 'none';
 
-export interface OrientationDeltaCoordinates {
+export interface DirectionDeltaCoordinates {
     [key: string]: number[]
 }
 
@@ -11,14 +11,14 @@ export interface Grid {
     height: number;
 }
 
-export interface Vacum {
+export interface Vacuum {
     x: number;
     y: number;
-    orientation: Orientation;
+    direction: Direction;
 }
 
-export interface VacumWithPositions {
-    vacum: Vacum;
+export interface VacuumWithPositions {
+    vacuum: Vacuum;
     positions: Set<string>;
 }
 

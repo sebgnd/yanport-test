@@ -8,22 +8,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { VacumPositionCalculatorComponent } from './components/vacum-position-calculator/vacum-position-calculator.component';
+import { VacuumPositionCalculatorComponent } from './components/vacuum-position-calculator/vacuum-position-calculator.component';
 import { MainWindowComponent } from './components/main-window/main-window.component';
-import { NewVacumPositionComponent } from './components/new-vacum-position/new-vacum-position.component';
-import { VacumPositionItemComponent } from './components/new-vacum-position/vacum-position-item/vacum-position-item.component';
 import { GridComponent } from './components/grid/grid.component';
 import { GridSquareComponent } from './components/grid/grid-square/grid-square.component';
+import { VacumPositionComponent } from './components/vacuum-position/vacuum-position.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    VacumPositionCalculatorComponent,
+    VacuumPositionCalculatorComponent,
     MainWindowComponent,
-    NewVacumPositionComponent,
-    VacumPositionItemComponent,
     GridComponent,
-    GridSquareComponent
+    GridSquareComponent,
+    VacumPositionComponent
   ],
   imports: [
     BrowserModule,
