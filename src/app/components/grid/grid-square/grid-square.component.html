@@ -1,5 +1,6 @@
 <div 
-    class="grid-square" 
+    class="grid-square"
+    [ngClass]="getDirectionClass()"
     (click)="handleClicked($event)" 
     [class.start]="status === 'start'" 
     [class.end]="status === 'end'"

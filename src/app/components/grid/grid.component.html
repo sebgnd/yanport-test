@@ -2,9 +2,10 @@
     <div class="grid-row" *ngFor="let row of rows; let y = index">
         <app-grid-square *ngFor="let column of columns; let x = index" 
             [x]="x"
-            [y]="y"
-            [status]="getStatus(x, y)"
-            (click)="handleClick($event)"
+            [y]="rows.length - 1 - y"
+            [direction]="getDirection(x, rows.length - 1 - y)"
+            [status]="getStatus(x, rows.length - 1 - y)"
+            (onClick)="handleClick($event)"
         ></app-grid-square>
     </div>
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Grid, Instruction, Vacum, Position, VacumWithPositions } from 'src/app/types/types';
+import { Grid, Instruction, Vacuum, Position, VacuumWithPositions } from 'src/app/types/types';
 
 @Component({
   selector: 'app-main-window',
@@ -8,18 +8,18 @@ import { Grid, Instruction, Vacum, Position, VacumWithPositions } from 'src/app/
 })
 export class MainWindowComponent implements OnInit {
   grid: Grid;
-  vacum: Vacum;
-  vacumPositions: Set<string> | null;
+  vacuum: Vacuum;
+  vacuumPositions: Set<string> | null;
   instructions: Instruction[];
-  newVacum: Vacum | null;
+  newVacuum: Vacuum | null;
 
   constructor() { }
 
-  handleNewVacumComputed({ vacum, positions }: VacumWithPositions) {
-    console.log(vacum);
+  handleNewVacuumComputed({ vacuum, positions }: VacuumWithPositions) {
+    console.log(vacuum);
     console.log(positions);
-    this.newVacum = vacum;
-    this.vacumPositions = positions;
+    this.newVacuum = vacuum;
+    this.vacuumPositions = positions;
   }
 
   handleGridChange(grid: Grid) {
@@ -28,37 +28,37 @@ export class MainWindowComponent implements OnInit {
     };
   }
 
-  // Only handle orientation for now
+  // Only handle direction for now
   // The position is handle by the grid
-  handleVacumChange(vacum: Vacum) {
-    this.updateVacum('orientation', vacum.orientation);
+  handleVacuumChange(vacuum: Vacuum) {
+    this.updateVacuum('direction', vacuum.direction);
   }
 
   handleGridClick(position: Position) {
-    this.updateVacum('x', position.x);
-    this.updateVacum('y', position.y);
+    this.updateVacuum('x', position.x);
+    this.updateVacuum('y', position.y);
   }
 
   handleInstructionsChange(instructions: Instruction[]) {
     this.instructions = instructions;
   }
 
-  updateVacum(key: string, value: any) {
-    if (this.newVacum) {
-      this.newVacum = null;
-      this.vacumPositions = null;
+  updateVacuum(key: string, value: any) {
+    if (this.newVacuum) {
+      this.newVacuum = null;
+      this.vacuumPositions = null;
     }
-    this.vacum = {
-      ...this.vacum,
+    this.vacuum = {
+      ...this.vacuum,
       [key]: value
     }
   }
 
   ngOnInit(): void {
     this.grid = { width: 10, height: 10 };
-    this.vacum = { x: 0, y: 0, orientation: 'N' };
+    this.vacuum = { x: 0, y: 0, direction: 'N' };
     this.instructions = [];
-    this.newVacum = null;
-    this.vacumPositions = null;
+    this.newVacuum = null;
+    this.vacuumPositions = null;
   }
 }

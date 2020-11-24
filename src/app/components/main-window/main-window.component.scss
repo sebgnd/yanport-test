@@ -5,14 +5,18 @@
     justify-content: center;
 }
 
-app-vacum-position-calculator {
+app-vacuum-position-calculator {
     display: block;
-    width: 50%;
-    padding: 3em;
+    width: 900px;
+    padding: 1.5em;
     box-sizing: border-box;
+
+    @media(max-width: 900px) {
+        width: 100%;
+    }
 }
 
-app-new-vacum-position {
+app-new-vacuum-position {
     display: block;
     width: 50%;
 }

@@ -1,19 +1,21 @@
 <div class="content">
+    <h1>Vacuum position calculator</h1>
     <app-grid
         [grid]="grid"
-        [start]="{x: vacum.x, y: vacum.y}"
-        [end]="newVacum ? {x: newVacum.x, y: newVacum.y} : null"
-        [grayedPositions]="vacumPositions"
+        [startVacum]="vacuum"
+        [endVacum]="newVacuum"
+        [grayedPositions]="vacuumPositions"
         (squareClicked)="handleGridClick($event)"
     ></app-grid>
-    <app-vacum-position-calculator
+    <app-vacuum-position *ngIf="newVacuum" [direction]="newVacuum.direction" [x]="newVacuum.x + 1" [y]="newVacuum.y + 1"></app-vacuum-position>
+    <app-vacuum-position-calculator
         [grid]="grid"
-        [vacum]="vacum"
+        [vacuum]="vacuum"
         [instructions]="instructions"
 
         (onGridChange)="handleGridChange($event)"
-        (onVacumChange)="handleVacumChange($event)"
-        (onNewVacumComputed)="handleNewVacumComputed($event)"
+        (onVacuumChange)="handleVacuumChange($event)"
+        (onNewVacuumComputed)="handleNewVacuumComputed($event)"
         (onInstructionsChange)="handleInstructionsChange($event)"
-    ></app-vacum-position-calculator>
+    ></app-vacuum-position-calculator>
 </div>

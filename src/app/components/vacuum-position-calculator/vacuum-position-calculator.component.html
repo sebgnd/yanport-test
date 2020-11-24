@@ -1,5 +1,5 @@
-<div class="info-selection-container">
-    <div>
+<div class="flex column info-selection-container">
+    <div class="flex column">
         <h2>Grid</h2>
         <div class="info-selection">
             <div class="info grid">
@@ -29,40 +29,36 @@
             </div>
         </div>
     </div>
-    <div >
-        <h2>Vacum</h2>
-        <div class="info-selection">
-            <div class="info small vacum">
+    <div class="flex row">
+        <div class="flex info column">
+            <h2>Vacuum</h2>
+            <div class="info-selection">
                 <mat-form-field appearance="fill">
-                    <mat-label>Orientation</mat-label>
+                    <mat-label>Direction</mat-label>
                     <mat-select 
                         matNativeControl 
-                        name="orientation" 
-                        [(ngModel)]="vacum.orientation"
+                        name="direction" 
+                        [(ngModel)]="vacuum.direction"
                     >
                         <mat-option value="N">N</mat-option>
                         <mat-option value="S">S</mat-option>
                         <mat-option value="E">E</mat-option>
                         <mat-option value="W">W</mat-option>
-                </mat-select>
+                    </mat-select>
                 </mat-form-field>
             </div>
         </div>
-    </div>
-    <div >
-        <h2>Instructions</h2>
-        <div class="info-selection">
-            <div class="info small vacum">
-                <div class="info">
-                    <mat-form-field appearance="fill">
-                        <mat-label>Instructions (A, G, D)</mat-label>
-                        <input 
-                            matInput
-                            [value]="instructionString" 
-                            (change)="handleInstructionsChange($event)" 
-                        />
-                    </mat-form-field>
-                </div>
+        <div class="flex info column">
+            <h2>Instructions</h2>
+            <div class="info-selection">
+                <mat-form-field appearance="fill">
+                    <mat-label>Instructions (A, G, D)</mat-label>
+                    <input 
+                        matInput
+                        [value]="instructionString" 
+                        (change)="handleInstructionsChange($event)" 
+                    />
+                </mat-form-field>
             </div>
         </div>
     </div>

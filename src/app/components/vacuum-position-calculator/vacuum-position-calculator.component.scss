@@ -1,8 +1,19 @@
 .info-selection-container {
-    display: flex;
-    flex-direction: column;
     margin: 20px;
     justify-content: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.column {
+    margin: 5px;
+    flex-direction: column;
 }
 
 .info-selection {
@@ -24,10 +35,14 @@
     &.small {
         flex-basis: 10%;
     }
-}
 
-.info label {
-    margin-bottom: 5px;
+    .label {
+        margin-bottom: 5px;
+    }
+
+    mat-form-field {
+        width: 100%;
+    }
 }
 
 .compute-button {

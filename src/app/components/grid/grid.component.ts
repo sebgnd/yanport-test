@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Grid, Position, Status } from 'src/app/types/types';
+import { Grid, Position, Status, Vacuum, Direction } from 'src/app/types/types';
 
 @Component({
   selector: 'app-grid',
@@ -8,8 +8,8 @@ import { Grid, Position, Status } from 'src/app/types/types';
 })
 export class GridComponent implements OnInit {
   @Input() grid: Grid;
-  @Input() start: Position | null;
-  @Input() end: Position | null;
+  @Input() startVacum: Vacuum;
+  @Input() endVacum: Vacuum | null;
   @Input() grayedPositions: Set<string> | null;
   @Output() squareClicked: EventEmitter<Position> = new EventEmitter();
 
@@ -26,14 +26,24 @@ export class GridComponent implements OnInit {
   getStatus(x: number, y: number): Status {
     const strPosition = x.toString() + y.toString();
 
-    if (this.end && x === this.end.x && y === this.end.y) {
+    if (this.endVacum && x === this.endVacum.x && y === this.endVacum.y) {
       return 'end';
     }
-    if (this.start && x === this.start.x && y === this.start.y) {
+    if (this.startVacum && x === this.startVacum .x && y === this.startVacum .y) {
       return 'start';
     }
     if (this.grayedPositions && this.grayedPositions.has(strPosition)) {
       return 'path';
+    }
+  }
+
+  getDirection(x: number, y: number): Direction | null {
+    const status = this.getStatus(x, y);
+
+    switch (status) {
+      case 'end': return this.endVacum.direction;
+      case 'start': return this.startVacum.direction;
+      default: return null
     }
   }
 
