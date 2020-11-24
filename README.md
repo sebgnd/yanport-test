@@ -11,3 +11,5 @@
     Les autres lettres ne seront pas prises en compte
 -------------------
 * Cliquez sur le bouton 'Go'
+
+![alt text](https://github.com/sebgnd/yanport-test/blob/master/images/2.jpg)
