@@ -1,15 +1,19 @@
 <div class="content">
+    <app-grid
+        [grid]="grid"
+        [start]="{x: vacum.x, y: vacum.y}"
+        [end]="newVacum ? {x: newVacum.x, y: newVacum.y} : null"
+        [grayedPositions]="vacumPositions"
+        (squareClicked)="handleGridClick($event)"
+    ></app-grid>
     <app-vacum-position-calculator
-    [grid]="grid"
-    [vacum]="vacum"
-    [instructions]="instructions"
+        [grid]="grid"
+        [vacum]="vacum"
+        [instructions]="instructions"
 
-    (onGridChange)="handleGridChange($event)"
-    (onVacumChange)="handleVacumChange($event)"
-    (onNewVacumComputed)="handleNewVacumComputed($event)"
-
+        (onGridChange)="handleGridChange($event)"
+        (onVacumChange)="handleVacumChange($event)"
+        (onNewVacumComputed)="handleNewVacumComputed($event)"
+        (onInstructionsChange)="handleInstructionsChange($event)"
     ></app-vacum-position-calculator>
-    <app-new-vacum-position
-        [newVacum]="newVacum"
-    ></app-new-vacum-position>
 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Vacum, Instruction, Grid, Orientation } from '../types/types';
+import { Vacum, Instruction, Grid, Orientation, VacumWithPositions } from '../types/types';
 
 @Injectable({
     providedIn: 'root'
@@ -8,13 +8,17 @@ export class VacumService {
 
     constructor() { }
 
-    move(vacum: Vacum, grid: Grid, instructions: Instruction[]): Vacum {
+    move(vacum: Vacum, grid: Grid, instructions: Instruction[]): VacumWithPositions {
+        const positions: Set<string> = new Set();
         let updatedVacum: Vacum = vacum;
 
         for (let instruction of instructions) {
             const previousVacum = updatedVacum;
     
             updatedVacum = this.getVacumAfterInstruction(updatedVacum, instruction);
+            positions.add(
+                updatedVacum.x.toString() + updatedVacum.y.toString()
+            );
 
             if (
                 updatedVacum.x >= grid.width || updatedVacum.x < 0 ||
@@ -24,7 +28,25 @@ export class VacumService {
             }
         }
     
-        return updatedVacum;
+        return {
+            vacum: updatedVacum,
+            positions: positions
+        };
+    }
+
+    generateInstructions(str: string): Instruction[] {
+        const upperCased: string = str.toUpperCase();
+        const res: Instruction[] = [];
+        
+        for (let i = 0; i < upperCased.length; i++) {
+            const c = upperCased.charAt(i);
+
+            if (c === 'A' || c === 'G' || c === 'D') {
+                res.push(c);
+            }
+        }
+
+        return res;
     }
 
     getVacumAfterInstruction(vacum: Vacum, instruction: Instruction): Vacum {
@@ -40,12 +62,14 @@ export class VacumService {
                 ...vacum,
                 orientation: this.getNextOrientation(vacum.orientation, instruction)
             }
-        } else {
+        } else if (instruction === 'A') {
             return {
                 ...vacum,
                 x: vacum.x + deltaCoordinates[vacum.orientation][0],
                 y: vacum.y + deltaCoordinates[vacum.orientation][1],
             }
+        } else {
+            return vacum;
         }
     }
     

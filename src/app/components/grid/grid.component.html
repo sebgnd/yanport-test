@@ -1,0 +1,10 @@
+<div class="grid-container">
+    <div class="grid-row" *ngFor="let row of rows; let y = index">
+        <app-grid-square *ngFor="let column of columns; let x = index" 
+            [x]="x"
+            [y]="y"
+            [status]="getStatus(x, y)"
+            (click)="handleClick($event)"
+        ></app-grid-square>
+    </div>
+</div>

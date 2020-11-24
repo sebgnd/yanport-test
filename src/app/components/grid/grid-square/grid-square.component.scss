@@ -1,0 +1,25 @@
+.grid-square {
+    background-color: #EFEFEF ;
+    border-radius: 3px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+
+    &:hover {
+        background-color: gray;
+    }
+
+    &.start {
+        background-color:  #673ab7;
+        opacity: 50%;
+    }
+
+    &.end {
+        background-color:  #673ab7;
+    }
+
+    &.path {
+        background-color: lightgray;
+    }
+}

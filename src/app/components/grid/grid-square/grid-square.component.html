@@ -1,0 +1,7 @@
+<div 
+    class="grid-square" 
+    (click)="handleClicked($event)" 
+    [class.start]="status === 'start'" 
+    [class.end]="status === 'end'"
+    [class.path]="status === 'path'">
+</div>

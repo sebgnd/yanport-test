@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Grid, Instruction, Vacum } from '../../types/types';
+import { Grid, Instruction, Vacum, VacumWithPositions } from '../../types/types';
 import { VacumService } from '../../services/vacum.service';
 
 @Component({
@@ -8,20 +8,21 @@ import { VacumService } from '../../services/vacum.service';
   styleUrls: ['./vacum-position-calculator.component.scss']
 })
 export class VacumPositionCalculatorComponent implements OnInit {
+  instructionString: string;
+
   @Input() grid: Grid;
   @Input() vacum: Vacum;
   @Input() instructions: Instruction[];
 
   @Output() onGridChange: EventEmitter<Grid> = new EventEmitter();
   @Output() onVacumChange: EventEmitter<Vacum> = new EventEmitter();
-  @Output() onNewVacumComputed: EventEmitter<Vacum> = new EventEmitter();
+  @Output() onNewVacumComputed: EventEmitter<VacumWithPositions> = new EventEmitter();
+  @Output() onInstructionsChange: EventEmitter<Instruction[]> = new EventEmitter();
 
   constructor(private vacumService: VacumService) { }
 
   ngOnInit(): void {
-    this.grid = { width: 10, height: 10 };
-    this.vacum = { x: 0, y: 0, orientation: 'N' };
-    this.instructions = ['D', 'A', 'D', 'A', 'D', 'A', 'D', 'A', 'A'];
+    this.instructionString = '';
   }
 
   onGridSizeChange(event) {
@@ -42,9 +43,18 @@ export class VacumPositionCalculatorComponent implements OnInit {
     })
   }
 
-  onGoClick() {
-    const newVacum = this.vacumService.move(this.vacum, this.grid, this.instructions);
+  handleInstructionsChange(event: any) {
+    const { value } = event.currentTarget;
+    const instructions = this.vacumService.generateInstructions(value);
 
-    this.onNewVacumComputed.emit(newVacum);
+    this.instructionString = value;
+    this.onInstructionsChange.emit(instructions);
+  }
+
+  onGoClick() {
+    const vacumWithPositions = this.vacumService.move(this.vacum, this.grid, this.instructions);
+    console.log(vacumWithPositions);
+
+    this.onNewVacumComputed.emit(vacumWithPositions);
   }
 }
