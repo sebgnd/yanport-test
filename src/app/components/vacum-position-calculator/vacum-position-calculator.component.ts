@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Grid, Instruction, Vacum } from '../../types/types';
 import { VacumService } from '../../services/vacum.service';
 
@@ -8,10 +8,13 @@ import { VacumService } from '../../services/vacum.service';
   styleUrls: ['./vacum-position-calculator.component.scss']
 })
 export class VacumPositionCalculatorComponent implements OnInit {
-  grid: Grid;
-  vacum: Vacum;
-  computedVacum: Vacum | null;
-  instructions: Instruction[];
+  @Input() grid: Grid;
+  @Input() vacum: Vacum;
+  @Input() instructions: Instruction[];
+
+  @Output() onGridChange: EventEmitter<Grid> = new EventEmitter();
+  @Output() onVacumChange: EventEmitter<Vacum> = new EventEmitter();
+  @Output() onNewVacumComputed: EventEmitter<Vacum> = new EventEmitter();
 
   constructor(private vacumService: VacumService) { }
 
@@ -21,27 +24,27 @@ export class VacumPositionCalculatorComponent implements OnInit {
     this.instructions = ['D', 'A', 'D', 'A', 'D', 'A', 'D', 'A', 'A'];
   }
 
-  onGridSizeChange(event: any) {
+  onGridSizeChange(event) {
     const { name, value } = event.currentTarget;
 
-    this.grid = {
+    this.onGridChange.emit({
       ...this.grid,
       [name]: parseInt(value)
-    }
+    });
   }
 
   onVacumInfoChange(event: any) {
     const { name, value } = event.currentTarget;
 
-    this.vacum = {
+    this.onVacumChange.emit({
       ...this.vacum,
       [name]: parseInt(value)
-    }
+    })
   }
 
   onGoClick() {
     const newVacum = this.vacumService.move(this.vacum, this.grid, this.instructions);
 
-    console.log(newVacum);
+    this.onNewVacumComputed.emit(newVacum);
   }
 }

@@ -1,1 +1,10 @@
-<app-vacum-position-calculator></app-vacum-position-calculator>
+<app-vacum-position-calculator
+    [grid]="grid"
+    [vacum]="vacum"
+    [instructions]="instructions"
+
+    (onGridChange)="handleGridChange($event)"
+    (onVacumChange)="handleVacumChange($event)"
+    (onNewVacumComputed)="handleNewVacumComputed($event)"
+
+></app-vacum-position-calculator>
